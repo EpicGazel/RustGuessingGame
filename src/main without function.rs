@@ -4,11 +4,13 @@ use std::cmp::Ordering;
 //use std::io::Write;
 //use std::{thread, time};
 
-fn get_user_number_input(range_min:u128, input_message:String) -> u128 {
+fn main() {
+    let range_min:u128 = 0;
     let mut token = String::new();
 
-    return loop {
-        println!("{}", input_message);
+    //Below code curtosey of https://www.reddit.com/r/rust/comments/obnlv8/some_neat_rust_syntax_loop_break_match/
+    let range_max:u128 = loop {
+        println!("Input range_max number:");
 
         token.clear();
         io::stdin()
@@ -27,15 +29,7 @@ fn get_user_number_input(range_min:u128, input_message:String) -> u128 {
             }
             }
         };
-}
 
-fn main() {
-    let range_min:u128 = 0;
-    let input_message = String::from("Enter a max range value: ");
-
-    //Get max number
-    let range_max = get_user_number_input(range_min, input_message);
-    
     let secret_number = rand::thread_rng().gen_range(range_min..range_max);
 
     println!("Secret number is {}", secret_number);
